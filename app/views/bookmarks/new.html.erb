@@ -1,0 +1,17 @@
+<div class="container">
+
+  <h1>Add a New Bookmark</h1>
+
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <div class="search-form-control form-group">
+      <%= f.input :comment %>
+      <%= f.association :movie %>
+      <%= f.submit class: 'btn btn-primary mt-2' %>
+    </div>
+  <% end %>
+
+
+
+
+  <%= link_to 'Back', lists_path %>
+</div>

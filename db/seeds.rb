@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'open-uri'
+
+puts 'Cleaning database....'
+Movie.destroy_all
+
+puts 'Creating movies...'
+
+url = 'http://tmdb.lewagon.com/discover/movie?sort_by=popularity.desc'
+
+user_serialized = URI.open(url).read
+user = JSON.parse(user_serialized)
+user['results'].each do |movie|
+  Movie.create(
+    title: movie['title'],
+    overview: movie['overview'],
+    poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}",
+    rating: movie['vote_average']
+  )
+  puts "#{movie['title']} created"
+end
+
+# p user["results"][0]['title']
+# p user["results"][0]['overview']
+# p user["results"][0]['poster_path']
+# p user["results"][0]['vote_average']
+# p "https://image.tmdb.org/t/p/w500#{user["results"][0]['poster_path']}"

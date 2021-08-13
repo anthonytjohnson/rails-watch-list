@@ -21,4 +21,15 @@
     <hr>
     <% end %>
   </div>
+  <div class="cards">
+    <div class="card-product">
+      <% @list.bookmarks.each do |bookmark| %>
+      <%= image_tag "#{bookmark.movie.poster_url}", alt: "#{bookmark.movie.title}"%>
+      <div class="card-product-infos">
+        <h2><%= bookmark.movie.title %> Rating <%= bookmark.movie.rating %></h2>
+        <p><%= bookmark.movie.overview %></p>
+      </div>
+    </div>
+  </div>
+
 </div>

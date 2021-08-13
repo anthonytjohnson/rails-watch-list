@@ -5,7 +5,7 @@
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <div class="search-form-control form-group">
       <%= f.input :comment %>
-      <%= f.association :movie %>
+      <%= f.association :movie, collection: Movie.order('name ASC') %>
       <%= f.submit class: 'btn btn-primary mt-2' %>
     </div>
   <% end %>

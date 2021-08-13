@@ -12,14 +12,13 @@
   <hr>
 
   <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
     <div class="card-product">
-      <% @list.bookmarks.each do |bookmark| %>
       <%= image_tag "#{bookmark.movie.poster_url}", alt: "#{bookmark.movie.title}"%>
       <div class="card-product-infos">
         <h2><%= bookmark.movie.title %></h2>
         <p><%= truncate(bookmark.movie.overview, length: 100) %></p>
       </div>
-
     </div>
     <% end %>
   </div>

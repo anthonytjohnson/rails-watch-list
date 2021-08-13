@@ -27,7 +27,7 @@
       <%= image_tag "#{bookmark.movie.poster_url}", alt: "#{bookmark.movie.title}"%>
       <div class="card-product-infos">
         <h2><%= bookmark.movie.title %> Rating <%= bookmark.movie.rating %></h2>
-        <p><%= bookmark.movie.overview %></p>
+        <p><%= truncate(bookmark.movie.overview, length: 50 %></p>
       </div>
       <% end %>
     </div>
